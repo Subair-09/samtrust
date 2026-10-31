@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-emerald-brand: #164E3D;
+  --color-emerald-brand-dark: #0D3327;
+  --color-emerald-brand-light: #1E6650;
+  --color-emerald-brand-soft: #EBF3F0;
+  --color-emerald-brand-subtle: #F1F7F4;
+
+  --color-gold-brand: #D4AF37;
+  --color-gold-brand-light: #E8C85E;
+  --color-gold-brand-dark: #AD8921;
+  --color-gold-brand-muted: #C5A059;
+  --color-gold-brand-soft: #FCF8EA;
+
+  --color-slate-brand: #1A2E26;
+  --color-slate-brand-muted: #536E63;
+  --color-slate-brand-light: #7E9B90;
+
+  --color-surface-bg: #F4F8F6;
+  --color-surface-card: #FFFFFF;
+  --color-surface-border: #E2ECE7;
+  --color-surface-border-subtle: #EDF4F1;
+
+  --radius-card: 16px;
+}
+
+/* Custom Design System Components & Utilities */
+@layer components {
+  /* Primary Button: Deep Forest Emerald with Gold hover highlight */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center font-semibold text-white bg-[#164E3D] hover:bg-[#0D3327] transition-all duration-200 rounded-xl px-5 py-2.5 shadow-sm hover:shadow-md active:scale-[0.98] border border-[#164E3D] hover:border-[#D4AF37]/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D4AF37] whitespace-nowrap select-none;
+  }
+
+  .btn-primary-gold {
+    @apply relative inline-flex items-center justify-center font-semibold text-[#164E3D] bg-[#D4AF37] hover:bg-[#E8C85E] transition-all duration-200 rounded-xl px-5 py-2.5 shadow-sm hover:shadow-md active:scale-[0.98] border border-[#D4AF37] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#164E3D] whitespace-nowrap select-none;
+  }
+
+  /* Secondary Button: Clean Crisp Outline with Emerald/Gold hover */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center font-medium text-[#164E3D] bg-white hover:bg-[#F4F8F6] border border-[#E2ECE7] hover:border-[#164E3D]/40 transition-all duration-200 rounded-xl px-5 py-2.5 shadow-xs hover:shadow-sm active:scale-[0.98] whitespace-nowrap select-none;
+  }
+
+  /* Ghost Button */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center font-medium text-[#164E3D] hover:text-[#0D3327] hover:bg-[#164E3D]/5 transition-all duration-150 rounded-xl px-4 py-2 whitespace-nowrap;
+  }
+
+  /* Scientific Precision Card */
+  .card-scientific {
+    @apply bg-white rounded-2xl border border-[#E2ECE7] shadow-[0_4px_20px_-4px_rgba(22,78,61,0.06)] hover:shadow-[0_12px_28px_-6px_rgba(22,78,61,0.12)] transition-all duration-300;
+  }
+
+  /* Glassmorphism Badge & Pill alternative */
+  .badge-glass {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium tracking-wide bg-white/80 backdrop-blur-md border border-[#E2ECE7] text-[#164E3D];
+  }
+
+  .badge-gold {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold bg-[#FCF8EA] border border-[#D4AF37]/30 text-[#AD8921];
+  }
+
+  .badge-emerald {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold bg-[#EBF3F0] border border-[#164E3D]/20 text-[#164E3D];
+  }
+
+  /* Technical Spec Tag */
+  .spec-tag {
+    @apply inline-flex items-center text-xs font-mono tabular-nums px-2.5 py-1 rounded-md bg-[#F4F8F6] border border-[#E2ECE7] text-[#1A2E26];
+  }
+}
+
+/* Custom Scrollbar for Catalog & Modals */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4F8F6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C5D5CF;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8FAEA2;
+}
+
+@keyframes slideProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-slide-progress {
+  animation: slideProgress 4000ms linear forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Cross-Browser & Multi-Device Performance Optimizations */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+

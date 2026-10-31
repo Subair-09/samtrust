@@ -1,0 +1,6 @@
+{
+  "name": "Samstrust Technologies Limited",
+  "description": "Official digital platform and engineering portal for Samstrust Technologies Limited (RC 9898142). Precision instrumentation, calibration, laboratory equipment, and industrial automation solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
