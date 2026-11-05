@@ -1,7 +1,12 @@
-- name: 📂 Sync files via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+- name: Run Database Migrations
+        uses: appleboy/ssh-action@master
         with:
-          server: samstrusttech.com
-          username: ${{ vars.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ./
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            source ~/.bashrc 2>/dev/null || true
+            export PATH=$PATH:/usr/local/bin:/usr/bin:~/.nvm/versions/node/$(ls ~/.nvm/versions/node 2>/dev/null | tail -n 1)/bin
+            cd ~/public_html || cd ~/samstrusttech.com
+            npx prisma migrate deploy || npx knex migrate:latest || npm run migrate --if-present
