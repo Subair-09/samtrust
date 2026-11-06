@@ -95,14 +95,14 @@ define('COMPANY_RC', 'RC 9898142');
 $seedAdmin = [
     'id' => 'usr-admin-0001',
     'email' => 'admin@samstrusttech.com',
-    // Hash for temporary password: Admin@ChangeMe123!
-    'password_hash' => '$2y$10$Iyy6bmU9TlDVenolA3dbGuyKsZWWKT6jRYrFuQNcUvBoh5kXCb5ty',
+    // Hash for production password: Samstrust@2026!
+    'password_hash' => '$2b$10$giDkkEcdD2MKse/Nb5hoTuilMIKjP4vpKSX2yhqCVABjnrtJpqhI6',
     'fullName' => 'Engr. Samuel O. Trust',
     'jobTitle' => 'Managing Director & Chief Metrologist',
     'companyName' => 'Samstrust Technologies Limited',
     'role' => 'portal-admin',
     'roleName' => 'Portal Super Administrator',
-    'mustChangePassword' => true,
+    'mustChangePassword' => false,
 ];
 
 $seedEditor = [

@@ -221,7 +221,13 @@ try {
                     $passwordValid = password_verify($password, $user['password_hash']);
                 }
                 if (!$passwordValid && $normalizedEmail === strtolower($seedAdmin['email'])) {
-                    $passwordValid = ($password === 'Admin@ChangeMe123!');
+                    if ($password === 'Samstrust@2026!' || $password === 'Admin@ChangeMe123!') {
+                        $passwordValid = true;
+                        // Auto-upgrade stored password hash in MySQL to the new production hash
+                        $newBcrypt = '$2b$10$giDkkEcdD2MKse/Nb5hoTuilMIKjP4vpKSX2yhqCVABjnrtJpqhI6';
+                        $pdo->prepare('UPDATE users SET password_hash = :hash, password_must_change = 0 WHERE id = :id')
+                            ->execute([':hash' => $newBcrypt, ':id' => $user['id']]);
+                    }
                 }
 
                 if (!$passwordValid) {
@@ -289,8 +295,7 @@ try {
         // B. Fallback in-memory verification for initial installation / seed verification
         if ($normalizedEmail === strtolower($seedAdmin['email'])) {
             $passwordValid = password_verify($password, $seedAdmin['password_hash']) ||
-                             $password === 'Admin@ChangeMe123!' ||
-                             $password === 'Samstrust@2026';
+                             $password === 'Samstrust@2026!';
 
             if ($passwordValid) {
                 $userPayload = [
@@ -301,7 +306,7 @@ try {
                     'companyName' => $seedAdmin['companyName'],
                     'role' => $seedAdmin['role'],
                     'roleName' => $seedAdmin['roleName'],
-                    'mustChangePassword' => true,
+                    'mustChangePassword' => false,
                 ];
                 $token = JWT::encode($userPayload, JWT_SECRET, JWT_EXPIRES_IN);
 

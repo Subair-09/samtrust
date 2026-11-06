@@ -507,35 +507,35 @@ INSERT INTO `users` (
 VALUES
 (
   'usr-admin-0001', 5, 'admin@samstrusttech.com',
-  '$2b$10$Iyy6bmU9TlDVenolA3dbGuyKsZWWKT6jRYrFuQNcUvBoh5kXCb5ty',
+  '$2b$10$giDkkEcdD2MKse/Nb5hoTuilMIKjP4vpKSX2yhqCVABjnrtJpqhI6',
   'SALT_ADM_2026', 'Engr. Samuel O. Trust', 'Managing Director & Chief Metrologist',
   'Samstrust Technologies Limited', 'RC 9898142', '+2348029844356', 'Headquarters (Lagos)',
-  1, 'Active', 1
+  1, 'Active', 0
 ),
 (
   'usr-tech-0001', 2, 'tech.okoye@samstrusttech.com',
-  '$2b$10$Iyy6bmU9TlDVenolA3dbGuyKsZWWKT6jRYrFuQNcUvBoh5kXCb5ty',
+  '$2b$10$giDkkEcdD2MKse/Nb5hoTuilMIKjP4vpKSX2yhqCVABjnrtJpqhI6',
   'SALT_TCH_2026', 'Engr. Nnamdi Okoye', 'Senior COREN Metrology Specialist',
   'Samstrust Technologies Limited', 'RC 9898142', '+2348029844356', 'Lagos & South-West',
   1, 'Active', 1
 ),
 (
   'usr-coord-0001', 3, 'dispatch@samstrusttech.com',
-  '$2b$10$Iyy6bmU9TlDVenolA3dbGuyKsZWWKT6jRYrFuQNcUvBoh5kXCb5ty',
+  '$2b$10$giDkkEcdD2MKse/Nb5hoTuilMIKjP4vpKSX2yhqCVABjnrtJpqhI6',
   'SALT_CRD_2026', 'Engr. Amina Suleiman', 'National Service Operations Lead',
   'Samstrust Technologies Limited', 'RC 9898142', '+2348029844356', 'National Operations',
   1, 'Active', 1
 ),
 (
   'usr-sales-0001', 4, 'commercial@samstrusttech.com',
-  '$2b$10$Iyy6bmU9TlDVenolA3dbGuyKsZWWKT6jRYrFuQNcUvBoh5kXCb5ty',
+  '$2b$10$giDkkEcdD2MKse/Nb5hoTuilMIKjP4vpKSX2yhqCVABjnrtJpqhI6',
   'SALT_SLS_2026', 'Femi Adebayo', 'Senior Commercial Accounts Specialist',
   'Samstrust Technologies Limited', 'RC 9898142', '+2348029844356', 'Commercial Desk',
   1, 'Active', 1
 ),
 (
   'usr-cust-0001', 1, 'c.nwachukwu@biozenith.com',
-  '$2b$10$Iyy6bmU9TlDVenolA3dbGuyKsZWWKT6jRYrFuQNcUvBoh5kXCb5ty',
+  '$2b$10$giDkkEcdD2MKse/Nb5hoTuilMIKjP4vpKSX2yhqCVABjnrtJpqhI6',
   'SALT_BZ_2026', 'Dr. Chioma Nwachukwu', 'Director of Quality Assurance',
   'BioZenith Pharmaceuticals Ltd', 'RC 1489201', '+2348023341188', 'Lagos & South-West',
   0, 'Active', 0

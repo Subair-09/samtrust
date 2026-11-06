@@ -87,7 +87,7 @@ export const LoginView: React.FC<LoginViewProps> = ({ onNavigate, targetRedirect
       const passwordMatches =
         password === managedAccount.passwordPlain ||
         (cleanEmail === 'admin@samstrusttech.com' &&
-          (password === 'Admin@ChangeMe123!'));
+          (password === 'Samstrust@2026!' || password === 'Admin@ChangeMe123!'));
 
       if (passwordMatches) {
         if (managedAccount.cmsRole !== 'none') {

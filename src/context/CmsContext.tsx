@@ -81,8 +81,8 @@ export const INITIAL_MANAGED_USERS: ManagedUserAccount[] = [
     cmsRole: 'super-admin',
     portalRole: 'portal-admin',
     status: 'Active',
-    passwordPlain: 'Admin@ChangeMe123!',
-    mustChangePassword: true,
+    passwordPlain: 'Samstrust@2026!',
+    mustChangePassword: false,
     twoFactorRequired: true,
     customPermissions: [
       'cms.slider.manage',
