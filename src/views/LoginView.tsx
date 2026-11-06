@@ -65,9 +65,20 @@ export const LoginView: React.FC<LoginViewProps> = ({ onNavigate, targetRedirect
     );
 
     if (managedAccount) {
-      if (managedAccount.status === 'Suspended') {
+      if (managedAccount.status !== 'Active') {
         setErrorMessage(
-          'This user account has been suspended by the System Administrator. Please contact IT Governance.'
+          'This account is not active. Only active accounts with assigned roles can log in.'
+        );
+        setLoading(false);
+        return;
+      }
+
+      const hasCmsRole = managedAccount.cmsRole && managedAccount.cmsRole !== 'none';
+      const hasPortalRole = managedAccount.portalRole && managedAccount.portalRole !== 'none';
+
+      if (!hasCmsRole && !hasPortalRole) {
+        setErrorMessage(
+          'Access Denied: Your account does not have an active role assigned. Only created users with an assigned role can log in.'
         );
         setLoading(false);
         return;
@@ -76,7 +87,7 @@ export const LoginView: React.FC<LoginViewProps> = ({ onNavigate, targetRedirect
       const passwordMatches =
         password === managedAccount.passwordPlain ||
         (cleanEmail === 'admin@samstrusttech.com' &&
-          (password === 'Admin@ChangeMe123!' || password === 'Samstrust@2026'));
+          (password === 'Admin@ChangeMe123!'));
 
       if (passwordMatches) {
         if (managedAccount.cmsRole !== 'none') {

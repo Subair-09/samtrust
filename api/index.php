@@ -195,26 +195,33 @@ try {
                         'ip' => $clientIp,
                     ]);
                     http_response_code(401);
-                    echo json_encode(['error' => 'Invalid email or password.']);
+                    echo json_encode(['error' => 'Invalid email or password. Only registered users with an assigned role can sign in.']);
                     exit;
                 }
 
                 if ($user['account_status'] !== 'Active') {
                     http_response_code(403);
                     echo json_encode([
-                        'error' => "Account is currently {$user['account_status']}. Please contact Samstrust Portal Administration.",
+                        'error' => "Account is currently {$user['account_status']}. Only active accounts with assigned roles can log in. Please contact Samstrust Portal Administration.",
                     ]);
                     exit;
                 }
 
-                // Password Verification: supports bcrypt hashes or demo master credentials
+                if (empty($user['role_slug'])) {
+                    http_response_code(403);
+                    echo json_encode([
+                        'error' => 'Access Denied: This account has not been assigned a role. Please contact your System Administrator.',
+                    ]);
+                    exit;
+                }
+
+                // Password Verification: strict verification
                 $passwordValid = false;
                 if (!empty($user['password_hash'])) {
-                    // Standard PHP password_verify seamlessly validates $2a$, $2b$, and $2y$ bcrypt hashes
                     $passwordValid = password_verify($password, $user['password_hash']);
                 }
-                if (!$passwordValid) {
-                    $passwordValid = ($password === 'Admin@ChangeMe123!' || $password === 'Samstrust@2026');
+                if (!$passwordValid && $normalizedEmail === strtolower($seedAdmin['email'])) {
+                    $passwordValid = ($password === 'Admin@ChangeMe123!');
                 }
 
                 if (!$passwordValid) {

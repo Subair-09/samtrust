@@ -13,8 +13,8 @@
   RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
 
   # 2. Dispatch /api/* requests to PHP REST API front controller
-  RewriteCond %{REQUEST_URI} ^/api(/.*)?$ [NC]
-  RewriteRule ^api(/.*)?$ api/index.php [QSA,L]
+  RewriteRule ^api/(.*)$ api/index.php/$1 [QSA,L]
+  RewriteRule ^api$ api/index.php/ [QSA,L]
 
   # 3. Block direct web access to sensitive environment, source & database files
   RewriteRule ^(\.env|\.git|database/.*\.sql|bun\.lock|package\.json|tsconfig\.json|server\.js) - [F,L]
